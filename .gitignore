@@ -1,0 +1,14 @@
+# Never commit source drawings / client documents
+*.pdf
+*.dwg
+*.dxf
+
+# Local preview config (machine-specific paths)
+.claude/
+
+# OS / editor noise
+Thumbs.db
+desktop.ini
+.DS_Store
+*.tmp
+__pycache__/
