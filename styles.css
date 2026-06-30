@@ -83,7 +83,36 @@ img { display: block; max-width: 100%; }
   background: radial-gradient(circle, rgba(226,59,46,.28), transparent 65%);
   filter: blur(20px); pointer-events: none;
 }
-.hero__inner { position: relative; max-width: var(--maxw); margin: 0 auto; text-align: center; }
+/* Animated fire-alarm circuit background */
+.hero__circuit {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  opacity: .62;
+  -webkit-mask-image: radial-gradient(ellipse 95% 92% at 50% 48%, #000 60%, transparent 100%);
+          mask-image: radial-gradient(ellipse 95% 92% at 50% 48%, #000 60%, transparent 100%);
+}
+.hero__circuit svg { width: 100%; height: 100%; display: block; }
+.cable { fill: none; stroke: rgba(159,176,212,.22); stroke-width: 1.4; }
+.panel-fill   { fill: rgba(18,26,52,.72); }
+.panel-screen { fill: rgba(47,224,200,.06); stroke: rgba(159,176,212,.28); stroke-width: 1; }
+.panel-line   { fill: none; stroke: rgba(201,214,240,.45); stroke-width: 1.5; stroke-linecap: round; }
+.panel-text   { fill: rgba(159,176,212,.5); font: 600 17px var(--mono); letter-spacing: 2px; }
+.dev      { fill: none; stroke: rgba(201,214,240,.5); stroke-width: 1.6; stroke-linecap: round; }
+.dev-fill { fill: rgba(18,26,52,.6); }
+.dev-dot  { fill: rgba(201,214,240,.55); }
+.halo     { fill: none; stroke: rgba(255,106,61,.45); stroke-width: 1.4; opacity: 0; }
+.led { opacity: .35; }
+.led--a { fill: #ff5a3d; } .led--b { fill: #2fe0c0; } .led--c { fill: #ffce4d; }
+.led--a { animation: blink 2.6s ease-in-out infinite; }
+.led--b { animation: blink 2.6s ease-in-out .9s infinite; }
+.led--c { animation: blink 2.6s ease-in-out 1.7s infinite; }
+@keyframes blink { 0%,100% { opacity: .25; } 50% { opacity: 1; } }
+.pulse--sig { fill: #ff7a45; }
+.pulse--res { fill: #2fe0c0; }
+@media (prefers-reduced-motion: reduce) {
+  .led--a, .led--b, .led--c { animation: none; }
+}
+
+.hero__inner { position: relative; z-index: 2; max-width: var(--maxw); margin: 0 auto; text-align: center; }
 .hero__eyebrow {
   font-family: var(--mono); font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
   color: var(--accent-2); margin-bottom: 18px;

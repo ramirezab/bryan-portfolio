@@ -31,6 +31,12 @@ if ('IntersectionObserver' in window) {
   revealEls.forEach(el => el.classList.add('is-in'));
 }
 
+// Pause the animated circuit background if the user prefers reduced motion
+if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const svg = document.querySelector('.hero__circuit svg');
+  if (svg && typeof svg.pauseAnimations === 'function') svg.pauseAnimations();
+}
+
 // Lightbox
 const lb = document.getElementById('lightbox');
 const lbImg = document.getElementById('lbImg');

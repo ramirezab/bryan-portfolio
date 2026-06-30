@@ -35,6 +35,95 @@
   <!-- HERO -->
   <section class="hero" id="top">
     <div class="hero__grid" aria-hidden="true"></div>
+
+    <!-- Animated fire-alarm circuit background -->
+    <div class="hero__circuit" aria-hidden="true">
+      <svg viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice"
+           xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+          <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="5" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+        </defs>
+
+        <!-- Cables (SLC loop fanning out from the panel) -->
+        <g class="cable-layer">
+          <path id="cable1" class="cable" d="M410,366 C560,300 640,170 760,120" />
+          <path id="cable2" class="cable" d="M410,366 C680,330 940,205 1180,150" />
+          <path id="cable3" class="cable" d="M410,366 C740,378 1010,372 1288,368" />
+          <path id="cable4" class="cable" d="M410,366 C660,430 900,520 1150,558" />
+          <path id="cable5" class="cable" d="M410,366 C560,470 680,600 820,620" />
+        </g>
+
+        <!-- FACP panel -->
+        <g class="panel">
+          <rect class="panel-fill" x="210" y="244" width="200" height="232" rx="12" />
+          <rect class="panel-line" x="210" y="244" width="200" height="232" rx="12" />
+          <rect class="panel-screen" x="230" y="266" width="160" height="78" rx="6" />
+          <line class="panel-line" x1="242" y1="292" x2="378" y2="292" />
+          <line class="panel-line" x1="242" y1="308" x2="356" y2="308" />
+          <line class="panel-line" x1="242" y1="324" x2="338" y2="324" />
+          <!-- status LEDs -->
+          <circle class="led led--a" cx="246" cy="372" r="6" />
+          <circle class="led led--b" cx="274" cy="372" r="6" />
+          <circle class="led led--c" cx="302" cy="372" r="6" />
+          <!-- terminal block -->
+          <rect class="panel-line" x="366" y="356" width="40" height="48" rx="3" />
+          <line class="panel-line" x1="374" y1="366" x2="374" y2="394" />
+          <line class="panel-line" x1="386" y1="366" x2="386" y2="394" />
+          <line class="panel-line" x1="398" y1="366" x2="398" y2="394" />
+          <text class="panel-text" x="310" y="456" text-anchor="middle">FACP</text>
+        </g>
+
+        <!-- Devices -->
+        <!-- D1 smoke -->
+        <g class="device">
+          <circle class="halo" cx="760" cy="120" r="22"><animate attributeName="r" values="20;34" dur="2.6s" begin="0.2s" repeatCount="indefinite" /><animate attributeName="opacity" values="0.5;0" dur="2.6s" begin="0.2s" repeatCount="indefinite" /></circle>
+          <circle class="dev-fill" cx="760" cy="120" r="20" /><circle class="dev" cx="760" cy="120" r="20" /><circle class="dev" cx="760" cy="120" r="11" /><circle class="dev-dot" cx="760" cy="120" r="3" />
+        </g>
+        <!-- D2 smoke -->
+        <g class="device">
+          <circle class="halo" cx="1180" cy="150" r="22"><animate attributeName="r" values="20;34" dur="2.6s" begin="1.1s" repeatCount="indefinite" /><animate attributeName="opacity" values="0.5;0" dur="2.6s" begin="1.1s" repeatCount="indefinite" /></circle>
+          <circle class="dev-fill" cx="1180" cy="150" r="20" /><circle class="dev" cx="1180" cy="150" r="20" /><circle class="dev" cx="1180" cy="150" r="11" /><circle class="dev-dot" cx="1180" cy="150" r="3" />
+        </g>
+        <!-- D3 pull station -->
+        <g class="device">
+          <circle class="halo" cx="1288" cy="368" r="24"><animate attributeName="r" values="22;36" dur="2.6s" begin="1.7s" repeatCount="indefinite" /><animate attributeName="opacity" values="0.5;0" dur="2.6s" begin="1.7s" repeatCount="indefinite" /></circle>
+          <rect class="dev-fill" x="1271" y="349" width="34" height="38" rx="5" /><rect class="dev" x="1271" y="349" width="34" height="38" rx="5" /><rect class="dev" x="1278" y="360" width="20" height="9" rx="2" />
+        </g>
+        <!-- D4 strobe -->
+        <g class="device">
+          <circle class="halo" cx="1150" cy="558" r="22"><animate attributeName="r" values="18;32" dur="2.6s" begin="2.3s" repeatCount="indefinite" /><animate attributeName="opacity" values="0.5;0" dur="2.6s" begin="2.3s" repeatCount="indefinite" /></circle>
+          <circle class="dev-fill" cx="1150" cy="558" r="17" /><circle class="dev" cx="1150" cy="558" r="17" /><path class="dev" d="M1150,548 L1150,568 M1140,558 L1160,558" /><circle class="dev" cx="1150" cy="558" r="6" />
+        </g>
+        <!-- D5 heat -->
+        <g class="device">
+          <circle class="halo" cx="820" cy="620" r="22"><animate attributeName="r" values="20;34" dur="2.6s" begin="2.9s" repeatCount="indefinite" /><animate attributeName="opacity" values="0.5;0" dur="2.6s" begin="2.9s" repeatCount="indefinite" /></circle>
+          <circle class="dev-fill" cx="820" cy="620" r="20" /><circle class="dev" cx="820" cy="620" r="20" /><path class="dev" d="M812,620 L828,620 M820,612 L820,628" /><circle class="dev" cx="820" cy="620" r="9" />
+        </g>
+
+        <!-- Signal pulses (device -> panel, warm) + Response pulses (panel -> device, cyan) -->
+        <g class="pulses">
+          <!-- cable1 -->
+          <circle class="pulse pulse--sig" r="4.5" filter="url(#glow)"><animateMotion dur="2.6s" begin="0s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath xlink:href="#cable1" /></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.8;1" dur="2.6s" begin="0s" repeatCount="indefinite" /></circle>
+          <circle class="pulse pulse--res" r="4.5" filter="url(#glow)"><animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath xlink:href="#cable1" /></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.8;1" dur="2.6s" begin="1.3s" repeatCount="indefinite" /></circle>
+          <!-- cable2 -->
+          <circle class="pulse pulse--sig" r="4.5" filter="url(#glow)"><animateMotion dur="2.6s" begin="0.5s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath xlink:href="#cable2" /></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.8;1" dur="2.6s" begin="0.5s" repeatCount="indefinite" /></circle>
+          <circle class="pulse pulse--res" r="4.5" filter="url(#glow)"><animateMotion dur="2.6s" begin="1.8s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath xlink:href="#cable2" /></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.8;1" dur="2.6s" begin="1.8s" repeatCount="indefinite" /></circle>
+          <!-- cable3 -->
+          <circle class="pulse pulse--sig" r="4.5" filter="url(#glow)"><animateMotion dur="2.6s" begin="1s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath xlink:href="#cable3" /></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.8;1" dur="2.6s" begin="1s" repeatCount="indefinite" /></circle>
+          <circle class="pulse pulse--res" r="4.5" filter="url(#glow)"><animateMotion dur="2.6s" begin="2.3s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath xlink:href="#cable3" /></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.8;1" dur="2.6s" begin="2.3s" repeatCount="indefinite" /></circle>
+          <!-- cable4 -->
+          <circle class="pulse pulse--sig" r="4.5" filter="url(#glow)"><animateMotion dur="2.6s" begin="1.5s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath xlink:href="#cable4" /></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.8;1" dur="2.6s" begin="1.5s" repeatCount="indefinite" /></circle>
+          <circle class="pulse pulse--res" r="4.5" filter="url(#glow)"><animateMotion dur="2.6s" begin="2.8s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath xlink:href="#cable4" /></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.8;1" dur="2.6s" begin="2.8s" repeatCount="indefinite" /></circle>
+          <!-- cable5 -->
+          <circle class="pulse pulse--sig" r="4.5" filter="url(#glow)"><animateMotion dur="2.6s" begin="2s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath xlink:href="#cable5" /></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.8;1" dur="2.6s" begin="2s" repeatCount="indefinite" /></circle>
+          <circle class="pulse pulse--res" r="4.5" filter="url(#glow)"><animateMotion dur="2.6s" begin="3.3s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath xlink:href="#cable5" /></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.8;1" dur="2.6s" begin="3.3s" repeatCount="indefinite" /></circle>
+        </g>
+      </svg>
+    </div>
+
     <div class="hero__inner">
       <p class="hero__eyebrow">Electrical Engineer &amp; Developer</p>
       <h1 class="hero__title">Bryan Ramírez Ampié</h1>
