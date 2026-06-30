@@ -182,8 +182,8 @@ img { display: block; max-width: 100%; }
   overflow: hidden; cursor: pointer; transition: border-color .25s, transform .25s, box-shadow .3s;
 }
 .gcard:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--shadow); }
-.gcard__imgwrap { background: #fff; aspect-ratio: 16 / 10; overflow: hidden; display: grid; place-items: center; }
-.gcard__imgwrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.gcard__imgwrap { background: #fff; aspect-ratio: 16 / 10; overflow: hidden; display: grid; place-items: center; padding: 10px; }
+.gcard__imgwrap img { width: 100%; height: 100%; object-fit: contain; transition: transform .4s; }
 .gcard:hover .gcard__imgwrap img { transform: scale(1.04); }
 .gcard__cap { padding: 18px 20px 20px; }
 .gcard__tag {
